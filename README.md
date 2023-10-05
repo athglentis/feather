@@ -1,6 +1,6 @@
 ## Feather: An Elegant Solution to Effective DNN Sparsification
 
-This repository contains the source code accompanying the accepted paper at the British Machine Vision Conference (BMVC) 2023 conference, titled [Feather: An Elegant Solution to Effective DNN Sparsification](https://arxiv.org/abs/2310.02448) by Athanasios Glentis Georgoulakis, George Retsinas and Petros Maragos.
+This repository contains the source code accompanying the accepted paper at the 2023 British Machine Vision Conference (BMVC), titled [Feather: An Elegant Solution to Effective DNN Sparsification](https://arxiv.org/abs/2310.02448) by Athanasios Glentis Georgoulakis, George Retsinas and Petros Maragos.
 
 
 ### Overview
