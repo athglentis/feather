@@ -74,3 +74,15 @@ pruner.desparsify()
 
     - python main.py --gpu=0 --wd=5e-4 --epochs=160 --model=resnet20 --ptarget=0.90    --sname='resnet20_ep=160_wd=5e-4_pt=0.90'
 	- python main.py --gpu=0 --wd=5e-4 --epochs=160 --model=resnet20 --ptarget=0.99    --sname='resnet20_ep=160_wd=5e-4_pt=0.99'
+
+### Citation
+
+If you find this work useful for your research, please cite our paper:
+```
+@inproceedings{glentis2023feather,
+author    = {Glentis Georgoulakis, Athanasios and Retsinas, George and Maragos, Petros},
+title     = {Feather: An Elegant Solution to Effective DNN Sparsification},
+booktitle = {Proceedings of the British Machine Vision Conference ({BMVC})},
+year      = {2023},
+}
+```
