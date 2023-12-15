@@ -5,6 +5,10 @@ This repository contains the source code accompanying the accepted paper at the 
 
 ### Overview
 
+![](figures/feather.png)
+
+Figure: (a) The Feather module, utilizing the new thresholding operator and the gradient scaling mask (b) the proposed family of thresholding operators for varying values of $p$. We adopt $p=3$, resulting to a fine balance between the two extremes, hard and soft thresholding respectively.
+
 **Feather** is a module that enables effective sparsification of neural networks during the standard course of training. The pruning process relies on an enhanced version of the Straight-Through Estimator (STE), utilizing a new thresholding operator and a gradient scaling technique, resulting into sparse yet highly accurate models, suitable for compact applications.
 
 Feather is versatile and not bound to a particular pruning framework. For the case of using a backbone based on global magnitude thresholding (i.e. a single threshold selected for all layers) and an incrementally increasing sparsity ratio over the training process, Feather(-Global) results to sparse models with the exact requested sparsity at the end of training which are more accurate than the current state-of-the-art, by a considerable margin. 
