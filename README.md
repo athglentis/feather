@@ -1,4 +1,4 @@
-# Feather: An Elegant Solution to Effective DNN Sparsification
+## Feather: An Elegant Solution to Effective DNN Sparsification
 
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/feather-an-elegant-solution-to-effective-dnn/network-pruning-on-imagenet-resnet-50-90-1)](https://paperswithcode.com/sota/network-pruning-on-imagenet-resnet-50-90-1?p=feather-an-elegant-solution-to-effective-dnn)
 
