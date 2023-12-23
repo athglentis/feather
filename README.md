@@ -1,4 +1,7 @@
-## Feather: An Elegant Solution to Effective DNN Sparsification
+# Feather: An Elegant Solution to Effective DNN Sparsification
+
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/feather-an-elegant-solution-to-effective-dnn/network-pruning-on-imagenet-resnet-50-90-1)](https://paperswithcode.com/sota/network-pruning-on-imagenet-resnet-50-90-1?p=feather-an-elegant-solution-to-effective-dnn)
+
 
 This repository contains the source code accompanying the accepted paper at the 2023 British Machine Vision Conference (BMVC), titled [Feather: An Elegant Solution to Effective DNN Sparsification](https://arxiv.org/abs/2310.02448) by Athanasios Glentis Georgoulakis, George Retsinas and Petros Maragos.
 
@@ -83,6 +86,6 @@ If you find this work useful for your research, please cite our paper:
 author    = {Glentis Georgoulakis, Athanasios and Retsinas, George and Maragos, Petros},
 title     = {Feather: An Elegant Solution to Effective DNN Sparsification},
 booktitle = {Proceedings of the British Machine Vision Conference ({BMVC})},
-year      = {2023},
+year      = {2023}
 }
 ```
