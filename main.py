@@ -58,8 +58,6 @@ else:
     
 nbatches = len(train_loader) 
 
-
-
 if args.model == 'resnet20':
     model = resnet(depth=20, num_classes=nclasses)
 elif args.model == 'mobilenet_v1':
@@ -70,11 +68,9 @@ elif args.model == 'densenet':
 else:
     raise ValueError('Model not implemented')
 
- 
 model.to(device)
 
 pruner = Pruner(model, device, final_rate=args.ptarget, nbatches=nbatches, epochs=args.epochs, pthres=args.pthres, t1=args.t1)
-
 
 params, params_nowd = get_params(model)
 optimizer = torch.optim.SGD(
@@ -85,12 +81,10 @@ optimizer = torch.optim.SGD(
     lr=args.lr, momentum=0.9, weight_decay=args.wd
 ) 
 
-
 scheduler = torch.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, args.epochs, T_mult=1)
 
-
-
 def train(epoch):
+    running_loss = 0
     model.train()
     for batch_idx, (data, target) in enumerate(train_loader):
     
@@ -106,18 +100,15 @@ def train(epoch):
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), 3)
         optimizer.step()
-        
 
-        scheduler.step((epoch-1) + batch_idx/nbatches )
-        
-        if batch_idx % 100 == 0:
-            print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(
-                epoch, batch_idx * len(data), len(train_loader.dataset),
-                100. * batch_idx / len(train_loader), loss.item()))
+        scheduler.step((epoch-1) + batch_idx/nbatches )   
+        running_loss += loss.item() * data.size(0)
+
+    epoch_loss = running_loss / len(train_loader.dataset)
+    print(f'Epoch: {epoch} \tLoss: {epoch_loss}')
+    writer.add_scalar("Loss/train", epoch_loss, epoch)
     
     pruner.update_thresh(end_of_batch=True)
-
-    writer.add_scalar("Loss/train", loss, epoch)
 
  
 
@@ -158,13 +149,5 @@ for epoch in range(1, args.epochs + 1):
 
 pruner.desparsify()
 
-
 writer.flush()
-
-
-
-
-
-
-
 
