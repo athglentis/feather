@@ -23,7 +23,7 @@ print(args)
 
 cwd = os.getcwd()
 tm = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-writer = SummaryWriter(log_dir=Path(os.path.join(cwd, 'runs', tm+f'_{args.sname}')))
+writer = SummaryWriter(log_dir=Path(os.path.join(cwd, 'runs', tm+f'-{args.sname}')))
 
 
 gpu_id = args.gpu
@@ -148,6 +148,12 @@ for epoch in range(1, args.epochs + 1):
 
 
 pruner.desparsify()
+
+models_dir = Path(os.path.join(cwd, 'models'))
+if not os.path.exists(models_dir):
+    os.makedirs(models_dir)
+    
+torch.save(model.state_dict(), os.path.join(models_dir, tm+f'-{args.sname}.pt'))
 
 writer.flush()
 
