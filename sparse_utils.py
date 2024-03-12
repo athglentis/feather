@@ -90,14 +90,14 @@ def iter_sparsify(m, feather, pthres=0):
                 m.__setattr__(name, slayer)
 
 
-def iter_desparsify(m, gth):
+def iter_desparsify(m, feather):
     for name, child in m.named_children():
-        iter_desparsify(child, gth)
+        iter_desparsify(child, feather)
         if type(child) == SparseConv:
             conv = child.conv
             w = conv.weight.data
-
-            nw = F.hardshrink(w, gth)
+            
+            nw = feather.forward(w)
             conv.weight.data = nw
 
             m.__setattr__(name, conv)
@@ -106,7 +106,7 @@ def iter_desparsify(m, gth):
             fc= child.fc
             w = fc.weight.data
 
-            nw = F.hardshrink(w, gth)
+            nw = feather.forward(w)
             fc.weight.data = nw
 
             m.__setattr__(name, fc)
@@ -260,7 +260,6 @@ class Pruner:
         return 100 * float(local_zeros_cnt) / float(self.prunable_weights_cnt)
     
     def desparsify(self):
-        gth = self.feather.gth 
-        iter_desparsify(self.model, gth)
+        iter_desparsify(self.model, self.feather)
 
 
