@@ -26,7 +26,7 @@ def parse_arguments():
     
     parser.add_argument('--model', type=str, default='resnet20', choices=['resnet20', 'mobilenet_v1', 'densenet'], help='model to train')
     
-    parser.add_argument('--sname', type=str, default='folder',  help='folder save name for runs')
+    parser.add_argument('--sname', type=str, default='run',  help='save name for run logs and model')
     
     parser.add_argument('--ptarget', type=float, default=0.95,  help='final target pruning ratio')
       
